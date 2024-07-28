@@ -1,17 +1,23 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  padding: 18px;
+  padding: 28px 0;
   background-color: #002948;
   text-align: center;
   color: white;
+
+  p {
+    margin: 0;
+    font-size: small;
+  }
 `;
 
 const Footer = () => {
-  return <Wrapper>Created by: Mark John Allen Nizal</Wrapper>;
+  return (
+    <Wrapper>
+      <p>Created by: Mark John Allen Nizal</p>
+    </Wrapper>
+  );
 };
 
 export default Footer;

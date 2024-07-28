@@ -40,13 +40,11 @@ const fadeIn = keyframes`
 `;
 
 export const Container = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  position: absolute;
   background-color: ${(props) => props.bgColor};
   color: ${(props) => props.textColor};
   transition: background-color 0.7s ease, color 0.7s ease;
