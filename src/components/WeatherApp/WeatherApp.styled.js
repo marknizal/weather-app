@@ -50,6 +50,10 @@ export const Container = styled.div`
   color: ${(props) => props.textColor};
   transition: background-color 0.7s ease, color 0.7s ease;
   animation: ${fadeIn} 0.7s ease;
+
+  @media (max-width: 768px) {
+    height: 90vh;
+  }
 `;
 
 export const TitleWrapper = styled.div`

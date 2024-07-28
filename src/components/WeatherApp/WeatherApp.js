@@ -15,6 +15,7 @@ const WeatherApp = () => {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchWeatherByLocation = async (latitude, longitude) => {
@@ -31,6 +32,8 @@ const WeatherApp = () => {
         console.error("Error fetching the weather data:", error);
         setError("Unable to fetch weather data for your location.");
         setWeather(null);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -44,24 +47,22 @@ const WeatherApp = () => {
           (error) => {
             console.error("Error getting user's location:", error);
             setError("Unable to retrieve your location.");
+            setLoading(false);
           }
         );
       } else {
         console.error("Geolocation is not supported by this browser.");
         setError("Geolocation is not supported by your browser.");
+        setLoading(false);
       }
     };
 
-    // Show notification to ask for permission
-    if (window.confirm("Allow Weather App to access this device's location")) {
-      getUserLocation();
-    } else {
-      setError("Location access denied. Please enter a city manually.");
-    }
+    getUserLocation();
   }, []);
 
   const getWeather = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when fetching weather by city
     const API_KEY = "8e73df35fd9d80c5c8d93289ab7e888e";
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
 
@@ -75,6 +76,8 @@ const WeatherApp = () => {
       console.error("Error fetching the weather data:", error);
       setError("City not found. Please try again.");
       setWeather(null);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -95,8 +98,9 @@ const WeatherApp = () => {
         />
         <Button type="submit">Search</Button>
       </Form>
+      {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {weather && (
+      {weather && !loading && (
         <WeatherInfo>
           <h2>{weather.name}</h2>
           <p>Temperature: {weather.main.temp} °C</p>
