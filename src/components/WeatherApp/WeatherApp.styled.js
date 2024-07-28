@@ -46,14 +46,11 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  position: absolute;
   background-color: ${(props) => props.bgColor};
   color: ${(props) => props.textColor};
   transition: background-color 0.7s ease, color 0.7s ease;
   animation: ${fadeIn} 0.7s ease;
-
-  @media (max-width: 768px) {
-    height: 90vh;
-  }
 `;
 
 export const TitleWrapper = styled.div`
@@ -71,12 +68,12 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 `;
 
 export const Input = styled.input`
   padding: 10px;
-  margin: 10px 0;
+  margin: 0 0 10px 0;
   font-size: 1rem;
   border: none;
   border-radius: 5px;

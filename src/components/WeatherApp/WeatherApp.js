@@ -92,7 +92,7 @@ const WeatherApp = () => {
       <Form onSubmit={getWeather}>
         <Input
           type="text"
-          placeholder="Enter city"
+          placeholder="Enter city.."
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
