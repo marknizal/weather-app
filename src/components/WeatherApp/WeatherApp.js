@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { TiWeatherPartlySunny } from "react-icons/ti";
 import {
+  getColorByWeather,
   Container,
   TitleWrapper,
   Form,
@@ -8,7 +10,6 @@ import {
   Button,
   WeatherInfo,
 } from "./WeatherApp.styled";
-import { TiWeatherPartlySunny } from "react-icons/ti";
 
 const WeatherApp = () => {
   const [city, setCity] = useState("");
@@ -72,8 +73,10 @@ const WeatherApp = () => {
     }
   };
 
+  const { bgColor, textColor } = getColorByWeather(weather);
+
   return (
-    <Container>
+    <Container bgColor={bgColor} textColor={textColor}>
       <TitleWrapper>
         <TiWeatherPartlySunny />
         <h1>Weather</h1>

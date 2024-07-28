@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   padding: 18px;
-  background-color: #02075d;
+  background-color: #002948;
   text-align: center;
   color: white;
 `;
