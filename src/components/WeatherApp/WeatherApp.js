@@ -52,7 +52,12 @@ const WeatherApp = () => {
       }
     };
 
-    getUserLocation();
+    // Show notification to ask for permission
+    if (window.confirm("Allow Weather App to access this device's location")) {
+      getUserLocation();
+    } else {
+      setError("Location access denied. Please enter a city manually.");
+    }
   }, []);
 
   const getWeather = async (e) => {
